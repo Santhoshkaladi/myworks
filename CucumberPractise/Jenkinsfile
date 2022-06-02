@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                echo 'building an application'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'testing an application'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'feedback'
+            }
+        }
+    }
+    post
+    {
+        always
+        {
+            emailext body: 'this is the status of our project jenkins.', subject: 'piplineststus', to: 'kaladireddy24@gmail.com'
+        }
+        
+    }
+}
